@@ -414,7 +414,7 @@ export default function AuthScreen() {
               Almost There!
             </h1>
             <p className="text-xl text-white/90 leading-relaxed">
-              We've sent a verification code to your phone. Enter it to complete your {authType === 'signup' ? 'registration' : 'sign in'}.
+             {` We've sent a verification code to your phone. Enter it to complete your`} {authType === 'signup' ? 'registration' : 'sign in'}.
             </p>
           </div>
         </div>
