@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 
 export default function LoginScreen() {
   const [phone, setPhone] = useState('');
-  const [otp, setOtp] = useState(['', '', '', '', '', '']);
+  const [otp, setOtp] = useState(['', '', '', '']);
   const [step, setStep] = useState('login'); // 'login' or 'otp'
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -57,11 +57,11 @@ export default function LoginScreen() {
     newOtp[index] = value.slice(-1);
     setOtp(newOtp);
 
-    if (value && index < 5) {
+    if (value && index < 3) {
       otpRefs.current[index + 1]?.focus();
     }
 
-    if (index === 5 && value && newOtp.every(digit => digit !== '')) {
+    if (index === 3 && value && newOtp.every(digit => digit !== '')) {
       handleVerifyOTP(newOtp.join(''));
     }
   };
@@ -73,7 +73,7 @@ export default function LoginScreen() {
   };
 
   const handleVerifyOTP = async (otpValue = otp.join('')) => {
-    if (otpValue.length !== 6) return;
+    if (otpValue.length !== 4) return;
     
     setLoading(true);
     setError('');
@@ -336,7 +336,7 @@ export default function LoginScreen() {
               </div>
               <h2 className="text-3xl font-bold text-gray-900 mb-2">Verify OTP</h2>
               <p className="text-gray-600">
-                Enter the 6-digit code sent to<br />
+                Enter the 4-digit code sent to<br />
                 <span className="font-semibold text-gray-900">+91 {phone}</span>
               </p>
             </div>
